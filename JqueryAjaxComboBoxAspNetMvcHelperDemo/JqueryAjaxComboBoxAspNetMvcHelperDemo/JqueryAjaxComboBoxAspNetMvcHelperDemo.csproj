@@ -190,9 +190,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Database\TheCatalog.sqlite">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Content\Database\TheCatalog.sqlite" />
     <None Include="Scripts\acbox\php\ajaxComboBox.php" />
     <None Include="Scripts\acbox\php\initval.php" />
     <None Include="Scripts\acbox\SQLite2\test.sqlite" />
