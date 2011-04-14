@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5BD0FA9B-C7F3-49AD-BAD1-2EA70921695B}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JqueryAjaxComboBoxAspNetMvcHelperDemo</RootNamespace>
+    <AssemblyName>JqueryAjaxComboBoxAspNetMvcHelperDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\..\_Common\fluentnhibernate-NH3.1-1.2\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\_Common\fluentnhibernate-NH3.1-1.2\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\..\_Common\fluentnhibernate-NH3.1-1.2\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\Downloads\SQLite-1.0.66.0-binaries\bin\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages" />
+    <Reference Include="System.Web.Helpers" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="GeneralCode.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Models.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Models\DDL.txt" />
+    <Content Include="Scripts\acbox\css\jquery.ajaxComboBox.css" />
+    <Content Include="Scripts\acbox\img\add_out.png" />
+    <Content Include="Scripts\acbox\img\add_over.png" />
+    <Content Include="Scripts\acbox\img\ajax-loader.gif" />
+    <Content Include="Scripts\acbox\img\ajax-loader_mini.gif" />
+    <Content Include="Scripts\acbox\img\btn_on.png" />
+    <Content Include="Scripts\acbox\img\btn_out.png" />
+    <Content Include="Scripts\acbox\img\combobox_button.png" />
+    <Content Include="Scripts\acbox\img\combobox_button_mini.png" />
+    <Content Include="Scripts\acbox\img\del_out.png" />
+    <Content Include="Scripts\acbox\img\del_over.png" />
+    <Content Include="Scripts\acbox\img\select_ng.png" />
+    <Content Include="Scripts\acbox\img\select_ng_mini.png" />
+    <Content Include="Scripts\acbox\img\select_ok.png" />
+    <Content Include="Scripts\acbox\img\select_ok_mini.png" />
+    <Content Include="Scripts\acbox\js\jquery.ajaxcombobox-google-minified.js" />
+    <Content Include="Scripts\acbox\js\jquery.ajaxComboBox.3.6.1 - Copy.js" />
+    <Content Include="Scripts\acbox\js\jquery.ajaxComboBox.3.6.1.js" />
+    <Content Include="Scripts\ASCProvided\Common.js" />
+    <Content Include="Scripts\ASCProvided\jclock.js" />
+    <Content Include="Scripts\ASCProvided\jquery-ui-1.8.10.custom.min.js" />
+    <Content Include="Scripts\ASCProvided\Master.js" />
+    <Content Include="Scripts\flexigrid\accept.png" />
+    <Content Include="Scripts\flexigrid\coffee.png" />
+    <Content Include="Scripts\flexigrid\flash.png" />
+    <Content Include="Scripts\flexigrid\flexigrid-google-minified-simple.js" />
+    <Content Include="Scripts\flexigrid\flexigrid.css" />
+    <Content Include="Scripts\flexigrid\flexigrid.js" />
+    <Content Include="Scripts\flexigrid\flexigrid.pack.js" />
+    <Content Include="Scripts\flexigrid\images\._fhbg.gif" />
+    <Content Include="Scripts\flexigrid\images\._wbg.gif" />
+    <Content Include="Scripts\flexigrid\images\add.png" />
+    <Content Include="Scripts\flexigrid\images\bg.gif" />
+    <Content Include="Scripts\flexigrid\images\btn-sprite.gif" />
+    <Content Include="Scripts\flexigrid\images\close.png" />
+    <Content Include="Scripts\flexigrid\images\ddn.png" />
+    <Content Include="Scripts\flexigrid\images\dn.png" />
+    <Content Include="Scripts\flexigrid\images\edit.png" />
+    <Content Include="Scripts\flexigrid\images\fhbg.gif" />
+    <Content Include="Scripts\flexigrid\images\first.gif" />
+    <Content Include="Scripts\flexigrid\images\hl.png" />
+    <Content Include="Scripts\flexigrid\images\last.gif" />
+    <Content Include="Scripts\flexigrid\images\line.gif" />
+    <Content Include="Scripts\flexigrid\images\load.gif" />
+    <Content Include="Scripts\flexigrid\images\load.png" />
+    <Content Include="Scripts\flexigrid\images\magnifier.png" />
+    <Content Include="Scripts\flexigrid\images\next.gif" />
+    <Content Include="Scripts\flexigrid\images\prev.gif" />
+    <Content Include="Scripts\flexigrid\images\up.png" />
+    <Content Include="Scripts\flexigrid\images\uup.png" />
+    <Content Include="Scripts\flexigrid\images\wbg.gif" />
+    <Content Include="Scripts\flexigrid\style.css" />
+    <Content Include="Scripts\jQuery\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jQuery\jquery-1.4.4.js" />
+    <Content Include="Scripts\jQuery\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jQuery\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jQuery\jquery-1.5.2.min.js" />
+    <Content Include="Scripts\jQuery\jquery-ui.js" />
+    <Content Include="Scripts\jQuery\jquery-ui.min.js" />
+    <Content Include="Scripts\jQuery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jQuery\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.min.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftAjax.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\Others\ParseDynamicContent.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JqueryAjaxComboBox\JqueryAjaxComboBox\JqueryAjaxComboBox.csproj">
+      <Project>{EF64D95E-BD8D-4647-BE21-D26E080703BD}</Project>
+      <Name>JqueryAjaxComboBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Database\TheCatalog.sqlite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\acbox\php\ajaxComboBox.php" />
+    <None Include="Scripts\acbox\php\initval.php" />
+    <None Include="Scripts\acbox\SQLite2\test.sqlite" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Input.cshtml" />
+    <Content Include="Views\Product\DeletePreview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>19829</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
