@@ -1,0 +1,73 @@
+﻿@model JqueryAjaxComboBoxAspNetMvcHelperDemo.Models.ProductDto
+
+@using JqueryAjaxComboBoxHelper
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Create</title>
+
+    <script src="@Url.Content("~/Scripts/jQuery/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jQuery/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jQuery/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+    <link href="@Url.Content("~/Scripts/acbox/css/jquery.ajaxComboBox.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/acbox/js/jquery.ajaxcombobox-google-minified.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/Others/ParseDynamicContent.js")" type="text/javascript"></script>
+
+    
+</head>
+<body>
+
+    @using (Html.BeginForm("Input","Product")) {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>ProductDto</legend>
+
+            @Html.HiddenFor(model => model.ProductId)
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductCode, "Product Code")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ProductCode)
+                @Html.ValidationMessageFor(model => model.ProductCode)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductName, "Product Name")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ProductName)
+                
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CategoryId, "Category")
+            </div>
+            <div class="editor-field">
+                <table>
+                <tr>                    
+                    <td>@Html.AjaxComboBoxFor(model => model.CategoryId, "/Category/Lookup", "/Category/Caption")</td>
+                    <td>@Html.ValidationMessageFor(model => model.CategoryId)</td>
+                </tr>
+                </table>
+            </div>
+    
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>   
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
+
+<script>
+
+</script>
