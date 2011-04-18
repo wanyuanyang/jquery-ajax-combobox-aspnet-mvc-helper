@@ -29,15 +29,38 @@ namespace JqueryAjaxComboBoxHelper
         {            
             return htmlHelper.AjaxComboBoxFor(expression, null, dataSourceUrl, captionSrcUrl, null);
         }
+        public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
+            (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
+            string dataSourceUrl,
+            string captionSrcUrl,
+            object htmlAttributes            
+            )
+        {
+            return htmlHelper.AjaxComboBoxFor(expression, dataSourceUrl, captionSrcUrl, htmlHelper, null);
+        }
+
 
         public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
             (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
             string dataSourceUrl,
             string captionSrcUrl,
-            object htmlAttributes
+            object htmlAttributes,
+            object otherJsonAttributes
             )
         {
-            return htmlHelper.AjaxComboBoxFor(expression, null, dataSourceUrl, captionSrcUrl, htmlAttributes);
+            return htmlHelper.AjaxComboBoxFor(expression, dataSourceUrl, captionSrcUrl, 
+                HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes), otherJsonAttributes);
+        }
+
+        public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
+            (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
+            string dataSourceUrl,
+            string captionSrcUrl,
+            IDictionary<string, object> htmlAttributes,
+            object otherJsonAttributes
+            )
+        {
+            return htmlHelper.AjaxComboBoxFor(expression, null, dataSourceUrl, captionSrcUrl, htmlAttributes, otherJsonAttributes);
         }
 
 
@@ -83,6 +106,21 @@ namespace JqueryAjaxComboBoxHelper
             string dataSourceUrl,
             string captionSrcUrl,
             IDictionary<string, object> htmlAttributes
+            )
+        {
+            return htmlHelper.AjaxComboBoxFor(expression, formUniqueName, dataSourceUrl, captionSrcUrl,
+                htmlAttributes, null);
+        }
+
+
+
+        public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
+            (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
+            string formUniqueName,
+            string dataSourceUrl,
+            string captionSrcUrl,
+            IDictionary<string, object> htmlAttributes,
+            object otherJsonAttributes
             )
         {
 
@@ -158,8 +196,18 @@ namespace JqueryAjaxComboBoxHelper
                 fieldAttributes = string.Join(" , ", z);
 
 
-            
 
+            string jsonString;
+
+            if (otherJsonAttributes != null)
+            {
+                jsonString = new JavaScriptSerializer().Serialize(otherJsonAttributes);
+                jsonString = jsonString.Substring(1, jsonString.Length - 2);
+            }
+            else 
+            {
+                jsonString = "";
+            }
 
 
             sb.Append(
@@ -175,6 +223,7 @@ $(function() {{
         'init_src' : '{3}',
         'init_val' : ['{4}']
         {5}
+        {6}
     }});
 
     $.validator.unobtrusive.parseDynamicContent(n);
@@ -187,6 +236,7 @@ $(function() {{
  , captionSrcUrl
  , initVal
  , z.Length > 0 ? (", " + "other_attr : {" + fieldAttributes + "}") : ""
+ , jsonString.Length > 0 ? ", " + jsonString : ""
  )
             );
 

@@ -48,6 +48,13 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
 
                         ,cnt_page = PagedFilter.Count()
 
+                        ,attached = PagedFilter.Select(x =>                    
+                                new[]
+                                {
+                                    new string[] { "Code", x.CategoryCode } ,
+                                    new string[] { "Ranking", x.Ranking.ToString() }
+                                }
+                            )
                     }
                     );
 
