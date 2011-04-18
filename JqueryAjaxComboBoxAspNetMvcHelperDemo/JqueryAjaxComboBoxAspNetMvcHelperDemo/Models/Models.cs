@@ -57,6 +57,7 @@ public class Category
     public virtual int CategoryId { get; set; }
     public virtual string CategoryCode { get; set; }
     public virtual string CategoryName { get; set; }
+    public virtual int Ranking { get; set; }
 }
 
 public class CategoryMap : ClassMap<Category>
@@ -66,6 +67,7 @@ public class CategoryMap : ClassMap<Category>
         Id(x => x.CategoryId);
         Map(x => x.CategoryCode);
         Map(x => x.CategoryName);
+        Map(x => x.Ranking);
     }
 }
 
