@@ -51,10 +51,11 @@
                 <table>
                 <tr>                    
                     <td>@Html.AjaxComboBoxFor(model => model.CategoryId,
-                    "/Category/Lookup",
-                    "/Category/Caption",
-                    new { style = "width: 300px " },
-                    new { sub_info = true } )</td>
+                        "/Category/Lookup",
+                        "/Category/Caption",
+                        new { style = "width: 300px " },
+                        new { sub_info = true } )
+                    </td>
                     <td>@Html.ValidationMessageFor(model => model.CategoryId)</td>
                 </tr>
                 </table>
