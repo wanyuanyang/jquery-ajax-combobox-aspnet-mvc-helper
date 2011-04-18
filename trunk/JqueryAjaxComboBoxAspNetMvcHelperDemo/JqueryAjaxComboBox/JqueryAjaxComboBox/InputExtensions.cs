@@ -9,9 +9,14 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Globalization;
 
+using System.Web.Script.Serialization;
+
+
+
 
 namespace JqueryAjaxComboBoxHelper
 {
+    
 
     public static class InputExtensions
     {
@@ -21,10 +26,29 @@ namespace JqueryAjaxComboBoxHelper
             string dataSourceUrl,
             string captionSrcUrl
             )
-        {
-
-            
+        {            
             return htmlHelper.AjaxComboBoxFor(expression, null, dataSourceUrl, captionSrcUrl, null);
+        }
+
+        public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
+            (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
+            string dataSourceUrl,
+            string captionSrcUrl,
+            object htmlAttributes
+            )
+        {
+            return htmlHelper.AjaxComboBoxFor(expression, null, dataSourceUrl, captionSrcUrl, htmlAttributes);
+        }
+
+
+        public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
+            (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
+            string dataSourceUrl,
+            string captionSrcUrl,
+            IDictionary<string, object> htmlAttributes
+            )
+        {
+            return htmlHelper.AjaxComboBoxFor(expression, null, dataSourceUrl, captionSrcUrl, htmlAttributes);
         }
 
 
@@ -134,7 +158,7 @@ namespace JqueryAjaxComboBoxHelper
                 fieldAttributes = string.Join(" , ", z);
 
 
-
+            
 
 
 
