@@ -16,7 +16,7 @@ using System.Web.Script.Serialization;
 
 namespace JqueryAjaxComboBoxHelper
 {
-    
+
 
     public static class InputExtensions
     {
@@ -26,14 +26,14 @@ namespace JqueryAjaxComboBoxHelper
             string dataSourceUrl,
             string captionSrcUrl
             )
-        {            
+        {
             return htmlHelper.AjaxComboBoxFor(expression, null, dataSourceUrl, captionSrcUrl, null);
         }
         public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
             (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
             string dataSourceUrl,
             string captionSrcUrl,
-            object htmlAttributes            
+            object htmlAttributes
             )
         {
             return htmlHelper.AjaxComboBoxFor(expression, dataSourceUrl, captionSrcUrl, htmlHelper, null);
@@ -48,7 +48,7 @@ namespace JqueryAjaxComboBoxHelper
             object otherJsonAttributes
             )
         {
-            return htmlHelper.AjaxComboBoxFor(expression, dataSourceUrl, captionSrcUrl, 
+            return htmlHelper.AjaxComboBoxFor(expression, dataSourceUrl, captionSrcUrl,
                 HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes), otherJsonAttributes);
         }
 
@@ -113,6 +113,19 @@ namespace JqueryAjaxComboBoxHelper
         }
 
 
+        public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
+            (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
+            string formUniqueName,
+            string dataSourceUrl,
+            string captionSrcUrl,
+            object htmlAttributes,
+            object otherJsonAttributes
+            )
+        {
+            return htmlHelper.AjaxComboBoxFor(expression, formUniqueName, dataSourceUrl, captionSrcUrl,
+                HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes), otherJsonAttributes);
+        }
+
 
         public static MvcHtmlString AjaxComboBoxFor<TModel, TProperty>
             (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,
@@ -131,7 +144,7 @@ namespace JqueryAjaxComboBoxHelper
             string fieldName = ExpressionHelper.GetExpressionText(expression);
 
             string fullName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(fieldName);
-            
+
             var tagBuilder = new TagBuilder("span");
             tagBuilder.MergeAttributes(htmlAttributes);
             tagBuilder.MergeAttribute("id", fieldName);
@@ -204,7 +217,7 @@ namespace JqueryAjaxComboBoxHelper
                 jsonString = new JavaScriptSerializer().Serialize(otherJsonAttributes);
                 jsonString = jsonString.Substring(1, jsonString.Length - 2);
             }
-            else 
+            else
             {
                 jsonString = "";
             }
