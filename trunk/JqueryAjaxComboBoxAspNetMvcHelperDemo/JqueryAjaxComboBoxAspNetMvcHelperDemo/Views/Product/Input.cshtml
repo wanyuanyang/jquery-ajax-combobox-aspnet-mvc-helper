@@ -79,13 +79,13 @@
 
 <script>
     $(function () {
-        $('#uxTester').click(function () {
-            alert('test');
+        $('#uxTester').click(function () {            
+            $('input[name=ux_CategoryId]').val('excellent!');
+            $('input[name=CategoryId]').val('id goes here');
         });
     });
 
-    function thisIsOk() {        
-        $('input[name=ux_CategoryId]').val('excellent!');
-        $('input[name=CategoryId]').val('id goes here');
+    function thisIsOk() {
+        alert('This is great');
     }
 </script>
