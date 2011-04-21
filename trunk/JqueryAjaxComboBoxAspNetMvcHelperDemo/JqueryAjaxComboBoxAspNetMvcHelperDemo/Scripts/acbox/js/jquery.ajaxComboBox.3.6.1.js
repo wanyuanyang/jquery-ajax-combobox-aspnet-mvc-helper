@@ -1271,6 +1271,15 @@ Contents
                         $hidden.val($current_result.attr('id'));
                         btnAttrDefault();
                     }
+
+
+                    // added by Michael Buen...
+                    if (options.on_selected != undefined) {
+                        // options.dcallback();
+                        alert('yohYehX');
+                        $.globalEval(options.on_selected);
+                    }
+                    // ...added by Michael Buen
                 }
 
                 // removed by Michael Buen 
@@ -1280,7 +1289,7 @@ Contents
                 $input.change(); //テキストボックスの値が変わったことを通知
 
                 // added by Michael Buen
-                $hidden.valid(); 
+                $hidden.valid();
             }
             //選択候補を次に移す
             function nextResult() {
@@ -1566,7 +1575,7 @@ Contents
         //************************************************************
         switch (options.lang) {
 
-            //日本語           
+            //日本語                
             case 'ja':
                 var msg = {
                     'add_btn': '追加ボタン',
@@ -1591,7 +1600,7 @@ Contents
                 };
                 break;
 
-            //英語           
+            //英語                
             case 'en':
                 var msg = {
                     'add_btn': 'Add button',
@@ -1616,7 +1625,7 @@ Contents
                 };
                 break;
 
-            //スペイン語 (Joaquin G. de la Zerda氏からの提供)           
+            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                
             case 'es':
                 var msg = {
                     'add_btn': 'Agregar boton',
