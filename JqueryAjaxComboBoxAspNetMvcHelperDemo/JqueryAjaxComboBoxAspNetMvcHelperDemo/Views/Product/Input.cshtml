@@ -80,15 +80,11 @@
 <script>
     $(function () {
         $('#uxTester').click(function () {
-            $('input[name=CategoryId]').val(8);
-            alert($('input[name=CategoryId]').val());
-            alert($('input[name=ux_CategoryId]').val());
-            $('input[name=ux_CategoryId]').val('hello');
+            alert('test');
         });
     });
 
-    function thisIsOk() {
-        alert('talaga');
+    function thisIsOk() {        
         $('input[name=ux_CategoryId]').val('excellent!');
         $('input[name=CategoryId]').val('id goes here');
     }
