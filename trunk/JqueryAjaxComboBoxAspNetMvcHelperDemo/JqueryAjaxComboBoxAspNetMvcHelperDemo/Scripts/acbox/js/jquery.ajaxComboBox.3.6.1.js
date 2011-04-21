@@ -1275,8 +1275,6 @@ Contents
 
                     // added by Michael Buen...
                     if (options.on_selected != undefined) {
-                        // options.dcallback();
-                        alert('yohYehX');
                         $.globalEval(options.on_selected);
                     }
                     // ...added by Michael Buen

@@ -236,11 +236,12 @@ $(function() {{
         'init_src' : '{3}',
         'init_val' : ['{4}']
         {5}
-        {6}
-        ,dcallback : function() {{ alert('heiheihei'); }}
+        {6}        
     }});
 
-    // $.validator.unobtrusive.parseDynamicContent(n);
+
+    if ($.validator != undefined)    
+        $.validator.unobtrusive.parseDynamicContent(n);
     
 }});
 </script>
