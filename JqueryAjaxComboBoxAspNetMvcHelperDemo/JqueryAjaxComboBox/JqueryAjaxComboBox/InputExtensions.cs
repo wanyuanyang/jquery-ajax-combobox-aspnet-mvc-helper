@@ -237,9 +237,10 @@ $(function() {{
         'init_val' : ['{4}']
         {5}
         {6}
+        ,dcallback : function() {{ alert('heiheihei'); }}
     }});
 
-    $.validator.unobtrusive.parseDynamicContent(n);
+    // $.validator.unobtrusive.parseDynamicContent(n);
     
 }});
 </script>

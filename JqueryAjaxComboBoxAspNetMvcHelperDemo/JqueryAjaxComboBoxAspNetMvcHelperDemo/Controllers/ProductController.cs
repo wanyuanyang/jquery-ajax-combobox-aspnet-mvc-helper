@@ -14,11 +14,11 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
             using (var s = SessionFactoryBuilder.GetSessionFactory().OpenSession())
             {
-                return View(s.Query<Product>().Fetch(x => x.Category).ToList());
+                return View(s.Query<Product>().Fetch(x=>x.Category).ToList());
             }
         }
 
