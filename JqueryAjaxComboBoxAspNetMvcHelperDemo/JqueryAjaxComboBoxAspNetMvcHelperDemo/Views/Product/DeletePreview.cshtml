@@ -21,7 +21,8 @@
 
 
 </fieldset>
-@using (Html.BeginForm("Delete","Product")) {
+
+@using (Html.BeginForm("Delete","Purchased")) {
     <p>
         <input type="hidden" id="ProductId" name="ProductId" value="@Model.ProductId" />
         <input type="submit" value="Delete" /> |

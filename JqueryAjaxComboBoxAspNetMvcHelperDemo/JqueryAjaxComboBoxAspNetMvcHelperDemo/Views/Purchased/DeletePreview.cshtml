@@ -1,0 +1,35 @@
+﻿@model JqueryAjaxComboBoxAspNetMvcHelperDemo.Models.Purchased
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Purchased</legend>
+
+    <div class="display-label">Purchase ID</div>
+    <div class="display-field">@Model.PurchasedId</div>
+
+    <div class="display-label">Product Name</div>
+    <div class="display-field">@Model.Product.ProductName</div>
+
+    <div class="display-label">Category</div>
+    <div class="display-field">@Model.Product.Category.CategoryName</div>
+
+    <div class="display-label">Quantity</div>
+    <div class="display-field">@Model.Quantity</div>
+
+</fieldset>
+
+@using (Html.BeginForm("Delete","Purchased")) {
+    <p>
+        <input type="hidden" id="PurchasedId" name="PurchasedId" value="@Model.PurchasedId" />
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

@@ -136,18 +136,33 @@ namespace JqueryAjaxComboBoxHelper
             object otherJsonAttributes
             )
         {
+            ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+            object value = metadata.Model;
+
+            string valueParameter = Convert.ToString(value, CultureInfo.CurrentCulture);
+
+            // bool useViewData = false;
+
 
 
 
             // string fieldName = ((MemberExpression)expression.Body).Member.Name;
 
-            string fieldName = ExpressionHelper.GetExpressionText(expression);
+            string expressionText = ExpressionHelper.GetExpressionText(expression);
 
-            string fullName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(fieldName);
+            string fullName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(expressionText);
+
+            /*if (String.IsNullOrEmpty(fullName))
+            {
+                throw new ArgumentException("Null or empty", "name");
+            }*/
+
+
+
 
             var tagBuilder = new TagBuilder("span");
             tagBuilder.MergeAttributes(htmlAttributes);
-            tagBuilder.MergeAttribute("id", fieldName);
+            tagBuilder.MergeAttribute("id", expressionText);
             tagBuilder.MergeAttribute("class", "ac_area");
             /*tagBuilder.MergeAttribute("style", 
                 "float: left" + 
@@ -161,26 +176,26 @@ namespace JqueryAjaxComboBoxHelper
 
 
 
-            ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
-            object metadataValue = metadata.Model;
 
 
 
 
-            string html = tagBuilder.ToString();
+
+           
 
 
             var sb = new StringBuilder();
 
 
 
-            string valueParameter = Convert.ToString(metadataValue, CultureInfo.CurrentCulture);
+
 
             // HtmlHelper h = htmlHelper;
 
             string attemptedValue = (string)htmlHelper.GetModelStateValue(fullName, typeof(string));
             // string initVal = attemptedValue ?? ((useViewData) ? htmlHelper.EvalString(fullName); 
             string initVal = attemptedValue ?? valueParameter;
+
 
 
             //// TODO for ComboBox's hidden
@@ -196,10 +211,12 @@ namespace JqueryAjaxComboBoxHelper
             }
 
 
+            string html = tagBuilder.ToString();
+
             // tagBuilder.MergeAttributes(htmlHelper.GetUnobtrusiveValidationAttributes(fieldName, metadata));
 
             var z =
-                    (from y in htmlHelper.GetUnobtrusiveValidationAttributes(fieldName, metadata)
+                    (from y in htmlHelper.GetUnobtrusiveValidationAttributes(expressionText, metadata)
                      select new { KeyValue = "'" + y.Key + "'" + " : " + ("'" + y.Value.ToString() + "'") })
                     .Select(x => x.KeyValue).ToArray();
 
@@ -245,7 +262,7 @@ $(function() {{
     
 }});
 </script>
-", fieldName.Replace(".", @"\\.")
+", expressionText.Replace(".", @"\\.")
  , formUniqueName == null ? "" : ", $('#" + formUniqueName + "')"
  , dataSourceUrl
  , captionSrcUrl
@@ -287,5 +304,6 @@ $(function() {{
             }
             return null;
         }
+
     }
 }

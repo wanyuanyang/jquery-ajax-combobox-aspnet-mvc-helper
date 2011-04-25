@@ -29,7 +29,21 @@ Contents
 ==========================================================================================
 */
 (function ($) {
+
+
     $.ajaxComboBox = function (area_pack, source, options, msg) {
+
+        function putPrefixToProperty(s, prefix) {
+            ndx = -1;
+            for (i = s.length - 1; i > 0; --i) {
+                if (s.charAt(i) == '.') {
+                    ndx = i;
+                    break;
+                }
+            }            
+            return s.substring(0, ndx + 1) + prefix + s.substring(ndx + 1, s.length);
+        }
+
 
         //================================================================================
         // 01. ComboBoxパッケージを生成
@@ -268,10 +282,13 @@ Contents
 
 
                     // added by Michael Buen...
-                    'name': 'ux_' + options.the_field_name,
-                    'id': 'ux_' + options.the_field_name
+                    'name': putPrefixToProperty(options.the_field_name, 'txt_'),
+                    'id': putPrefixToProperty(options.the_field_name, 'txt_')
+
                     // ...added by Michael Buen
                 });
+
+
             }
 
 
@@ -839,11 +856,13 @@ Contents
 
                     setLoadImg();
 
+
                     //ここでAjax通信を行っている
                     // $xhr = $.getJSON( // removed by Michael Buen
                     $xhr = $.post( // use Post, it's more secure. changed by Michael Buen
 						options.source,
 						{
+						    'cascaded_word': eval(options.cascaded_word), // added by Michael Buen						    
 						    'q_word': q_word,
 						    'page_num': which_page_num,
 						    'per_page': options.per_page,
@@ -1499,7 +1518,8 @@ Contents
             init_src: '/TheJson/InitVal/',  //初期値設定で、セレクト専用の場合に必要 // modified by Michael Buen
 
 
-            input_prefix: $(this).attr('id') + '_', //テキストボックスのname属性の接頭辞
+            // removed by Michael Buen
+            // input_prefix: $(this).attr('id') + '_', //テキストボックスのname属性の接頭辞
 
             the_field_name: $(this).attr('id'), // added by Michael Buen
 
@@ -1573,7 +1593,7 @@ Contents
         //************************************************************
         switch (options.lang) {
 
-            //日本語                
+            //日本語                                
             case 'ja':
                 var msg = {
                     'add_btn': '追加ボタン',
@@ -1598,7 +1618,7 @@ Contents
                 };
                 break;
 
-            //英語                
+            //英語                                
             case 'en':
                 var msg = {
                     'add_btn': 'Add button',
@@ -1623,7 +1643,7 @@ Contents
                 };
                 break;
 
-            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                
+            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                                
             case 'es':
                 var msg = {
                     'add_btn': 'Agregar boton',
