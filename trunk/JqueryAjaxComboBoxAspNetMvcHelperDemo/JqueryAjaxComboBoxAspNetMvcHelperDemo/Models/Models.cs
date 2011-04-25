@@ -7,28 +7,6 @@ using System.Web;
 using FluentNHibernate.Mapping;
 
 
-public class ProductDto
-{
-    public virtual int ProductId { get; set; }
-    public virtual string ProductCode { get; set; }
-    public virtual string ProductName { get; set; }
-    public virtual int CategoryId { get; set; }
-}
-
-public class ProductDtoMap : ClassMap<ProductDto>
-{
-    public ProductDtoMap()
-    {
-        Table("Product");        
-        Not.LazyLoad();       
-        Id(x => x.ProductId);
-        Map(x => x.ProductCode);
-        Map(x => x.ProductName);
-        Map(x => x.CategoryId);
-    }
-   
-}
-
 public class Product
 {
     public virtual int ProductId { get; set; }
@@ -41,7 +19,6 @@ public class ProductMap : ClassMap<Product>
 {
     public ProductMap()
     {
-        Table("Product");
         Id(x => x.ProductId);
         Map(x => x.ProductCode);
         Map(x => x.ProductName);
@@ -68,6 +45,27 @@ public class CategoryMap : ClassMap<Category>
         Map(x => x.CategoryCode);
         Map(x => x.CategoryName);
         Map(x => x.Ranking);
+    }
+}
+
+    
+public class Purchased
+{
+    public virtual int PurchasedId { get; set; }
+    public virtual Product Product { get; set; }
+    public virtual int Quantity { get; set; }
+    public virtual string PurchasedBy { get; set; }
+}
+
+    
+public class PurchasedMap : ClassMap<Purchased>
+{
+    public PurchasedMap()
+    {
+        Id(x => x.PurchasedId);
+        References(x => x.Product).Column("ProductId");
+        Map(x => x.Quantity);
+        Map(x => x.PurchasedBy);
     }
 }
 

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<JqueryAjaxComboBoxAspNetMvcHelperDemo.ModelsViews.PurchasedViewModel>
+
+@{
+    ViewBag.Title = "Purhased";
+}
+
+<h2>Purchased</h2>
+
+<p>
+    
+</p>
+<table class="stats" cellspacing="0">
+    <tr>
+        <td class="hed">@Html.ActionLink("Purchase", "Input", null, new { style = "color: white" } )</td>
+        <td class="hed">
+            Purchased Id
+        </td>
+        <td class="hed">
+            Category
+        </td>
+        <td class="hed">
+            Product
+        </td>
+        <td class="hed">
+            Quantity
+        </td>
+        <td class="hed">
+            Purchased By
+        </td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "InputEdit", new { id=item.PurchasedId  }) |            
+            @Html.ActionLink("Delete", "DeletePreview", new { id=item.PurchasedId  })
+        </td>
+        <td>
+            @item.PurchasedId
+        </td>
+        <td>
+            @item.CategoryName
+        </td>
+        <td>
+            @item.ProductName
+        </td>
+        <td style="text-align: right">
+            @item.Quantity
+        </td>
+        <td>
+            @item.PurchasedBy
+        </td>
+    </tr>
+}
+
+
+
+</table>
+
+<p><a href="/">Home</a></p>

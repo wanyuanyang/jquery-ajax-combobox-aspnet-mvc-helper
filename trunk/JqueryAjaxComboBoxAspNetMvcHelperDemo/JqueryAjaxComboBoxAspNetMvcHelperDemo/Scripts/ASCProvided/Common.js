@@ -33,3 +33,16 @@ function getSelectedTabIndex() {
 function RefershList() {
     $('#frmUserList').submit();
 }
+
+
+
+function putPrefixAtProperty(s, prefix) {
+    ndx = -1;
+    for (i = s.length - 1; i >= 0; --i) {
+        if (s[i] == '.') {
+            ndx = i;
+            break;
+        }
+    }
+    return s.substring(0, ndx + 1) + prefix + s.substring(ndx + 1, s.length);
+}

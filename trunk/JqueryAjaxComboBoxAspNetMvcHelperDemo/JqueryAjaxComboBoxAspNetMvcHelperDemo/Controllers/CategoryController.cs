@@ -59,22 +59,27 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
                     );
 
             }//using
-        }//List
+        }//Lookup
 
 
         [HttpPost]
         public string Caption(string q_word)
-        {
+        {            
             using (var svc = SessionFactoryBuilder.GetSessionFactory().OpenSession())
             {
-                if (string.IsNullOrEmpty(q_word))
-                    return "";
-                else
-                    return 
-                        svc.Query<Category>()
-                        .Where(x => x.CategoryId == int.Parse(q_word))
-                        .Select(x => x.CategoryName)
-                        .SingleOrDefault();
+                if (string.IsNullOrEmpty(q_word)) return "";
+
+                int categoryId;
+                bool isOk = int.TryParse(q_word, out categoryId);
+
+
+                return
+                    isOk ?
+                    svc.Query<Category>()
+                    .Where(x => x.CategoryId == categoryId)
+                    .Select(x => x.CategoryName)
+                    .SingleOrDefault()
+                    : "";
             }
 
         }

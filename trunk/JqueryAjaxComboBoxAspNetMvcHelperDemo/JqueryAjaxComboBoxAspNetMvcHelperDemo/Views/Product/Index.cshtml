@@ -1,55 +1,53 @@
 ﻿@model IEnumerable<JqueryAjaxComboBoxAspNetMvcHelperDemo.Models.Product>
 
+@{ ViewBag.Title = "Products"; }
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Input")
-    </p>
-    <table border=1>
-        <tr>
-            <th></th>
-            <th>
-                Product Id
-            </th>
-            <th>
-                Product Code
-            </th>
-            <th>
-                Product Name
-            </th>
-            <th>
-                Category
-            </th>
-        </tr>
+<h2>Products</h2>    
+
+<p>
     
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "InputEdit", new { id = item.ProductId }) |                
-                @Html.ActionLink("Delete", "DeletePreview", new { id=item.ProductId })
-            </td>
-            <td>
-                @item.ProductId
-            </td>
-            <td>
-                @item.ProductCode
-            </td>
-            <td>
-                @item.ProductName
-            </td>
-            <td>
-                @item.Category.CategoryName
-            </td>
-        </tr>
-    }
+</p>
+<table  class="stats" cellspacing="0" >
+    <tr>
+        <td class="hed">@Html.ActionLink("New Product", "Input", null, new { style = "color: white" } )</td>
+        <td class="hed">
+            Product Id
+        </td>
+        <td class="hed">
+            Product Code
+        </td>
+        <td class="hed">
+            Product Name
+        </td>
+        <td class="hed">
+            Category
+        </td>
+    </tr>
     
-    </table>
-</body>
-</html>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "InputEdit", new { id = item.ProductId }) |                
+            @Html.ActionLink("Delete", "DeletePreview", new { id=item.ProductId })
+        </td>
+        <td>
+            @item.ProductId
+        </td>
+        <td>
+            @item.ProductCode
+        </td>
+        <td>
+            @item.ProductName
+        </td>
+        <td>
+            @item.Category.CategoryName
+        </td>
+    </tr>
+}
+    
+</table>
+
+<p><a href="/">Home</a></p>
 
