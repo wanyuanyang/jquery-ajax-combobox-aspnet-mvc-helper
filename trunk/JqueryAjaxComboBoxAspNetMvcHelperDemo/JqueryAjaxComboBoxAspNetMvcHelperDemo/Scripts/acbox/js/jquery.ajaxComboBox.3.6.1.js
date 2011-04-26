@@ -33,6 +33,10 @@ Contents
 
     $.ajaxComboBox = function (area_pack, source, options, msg) {
 
+
+        // I modified all $input to this.input -- Michael Buen
+        this.box = null;
+
         function putPrefixToProperty(s, prefix) {
             ndx = -1;
             for (i = s.length - 1; i > 0; --i) {
@@ -40,10 +44,23 @@ Contents
                     ndx = i;
                     break;
                 }
-            }            
+            }
             return s.substring(0, ndx + 1) + prefix + s.substring(ndx + 1, s.length);
         }
 
+        this.clearValue = function () {            
+            this.box.input.val('');            
+            this.box.hidden.val('');            
+            this.box.resetPage();                        
+        };
+
+        /*
+        // added by Michael Buen...
+        this.addPack = function (btn) {
+        addPack(this, btn);
+        };
+        // ...added by Michael Buen
+        */
 
         //================================================================================
         // 01. ComboBoxパッケージを生成
@@ -71,17 +88,17 @@ Contents
 				    $(ev.target).attr('src', options.p_add_img1);
 				})
 				.click(function () {
-				    addPack(area_pack);
+				    addPack(this, area_pack); // this, added by Michael Buen
 				})
 				.appendTo($add_area);
         }
 
         //最初に、Boxをひとつ用意
         if (options.init_val === false) {
-            addPack(area_pack);
+            addPack(this, area_pack); // this, added by Michael Buen
         } else {
             for (i = 0; options.init_val.length > i; i++) {
-                addPack(area_pack);
+                addPack(this, area_pack); // this, added by Michael Buen
             }
             options.init_val = false;
         }
@@ -115,10 +132,12 @@ Contents
             }
         }
 
+
         //************************************************************
         //ComboBoxを追加
         //************************************************************
-        function addPack(btn) {
+
+        function addPack(c, btn) { // c, added by Michael Buen
             num++;
 
             var $pack = $('<div></div>')
@@ -171,7 +190,8 @@ Contents
             }
 
             //◆◆個別のComboBox生成処理を呼び出す◆◆
-            individual($box);
+            // individual($box); // removed by Michael Buen
+            c.box = new individual($box); // added by Michael Buen
 
             delBtnShowHide();
         }
@@ -180,6 +200,14 @@ Contents
         //◆◆個別のComboBoxを生成◆◆
         //************************************************************
         function individual(area_combobox) {
+
+            // added by Michael Buen...
+            this.input = null;
+            this.hidden = null;
+            this.resetPage = function () {
+                page_num_all = 1;
+            };
+            // ....added
 
             //Ajaxにおけるキャッシュを無効にする
             $.ajaxSetup({ cache: false });
@@ -195,7 +223,9 @@ Contents
             var timer_delay = false; //hold timeout ID for suggestion result_area to appear
             var timer_val_change = false; //タイマー変数(一定時間ごとに入力値の変化を監視)
             var type_suggest = false; //リストのタイプ。false=>全件 / true=>予測
+
             var page_num_all = 1;     //全件表示の際の、現在のページ番号
+
             var page_num_suggest = 1;     //候補表示の際の、現在のページ番号
             var max_all = 1;     //全件表示の際の、全ページ数
             var max_suggest = 1;     //候補表示の際の、全ページ数
@@ -248,6 +278,8 @@ Contents
 
 				})
 				.addClass(options.input_class);
+
+            this.input = $input; // added by Michael Buen
 
             if (options.cake_rule) {
                 //-----------------------------------
@@ -330,6 +362,8 @@ Contents
 				    // added by Michael Buen
 				})
 				.val('');
+
+            this.hidden = $hidden; // added by Michael Buen
 
             // $hidden.attr({ 'x': 'y' }); // sample adding of attribute
             $hidden.attr(options.other_attr);
@@ -857,12 +891,14 @@ Contents
                     setLoadImg();
 
 
+                    $.globalEval('var xxx = ' + options.cascaded_word + ';');
+
                     //ここでAjax通信を行っている
                     // $xhr = $.getJSON( // removed by Michael Buen
                     $xhr = $.post( // use Post, it's more secure. changed by Michael Buen
 						options.source,
 						{
-						    'cascaded_word': eval(options.cascaded_word), // added by Michael Buen						    
+						    'cascaded_word': xxx, // added by Michael Buen						    
 						    'q_word': q_word,
 						    'page_num': which_page_num,
 						    'per_page': options.per_page,
@@ -1481,14 +1517,17 @@ Contents
                     });
                 }
             }
-        }
-    };
+        } // individual's object
+    }; // ajaxComboBox
 
     //================================================================================
     // 10. 処理の始まり
     //--------------------------------------------------------------------------------
     $.fn.ajaxComboBox = function (source, options) {
         if (!source) return;
+
+
+
 
         //************************************************************
         //オプション
@@ -1593,7 +1632,7 @@ Contents
         //************************************************************
         switch (options.lang) {
 
-            //日本語                                
+            //日本語                                                                                       
             case 'ja':
                 var msg = {
                     'add_btn': '追加ボタン',
@@ -1618,7 +1657,7 @@ Contents
                 };
                 break;
 
-            //英語                                
+            //英語                                                                                       
             case 'en':
                 var msg = {
                     'add_btn': 'Add button',
@@ -1643,7 +1682,7 @@ Contents
                 };
                 break;
 
-            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                                
+            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                                                                                       
             case 'es':
                 var msg = {
                     'add_btn': 'Agregar boton',
@@ -1670,9 +1709,22 @@ Contents
 
             default:
         }
+
+        var ajc = null; // added by Michael Buen
         this.each(function () {
-            new $.ajaxComboBox(this, source, options, msg);
+            // new $.ajaxComboBox(this, source, options, msg); // removed by Michael Buen
+            ajc = new $.ajaxComboBox(this, source, options, msg); // added by Michael Buen
+
+
         });
+
+        this.data('ajc', ajc);
+
+
         return this;
+    }; // fn.ajaxComboBox
+
+    $.fn.ajc = function () {
+        return this.data('ajc');
     };
 })(jQuery);
