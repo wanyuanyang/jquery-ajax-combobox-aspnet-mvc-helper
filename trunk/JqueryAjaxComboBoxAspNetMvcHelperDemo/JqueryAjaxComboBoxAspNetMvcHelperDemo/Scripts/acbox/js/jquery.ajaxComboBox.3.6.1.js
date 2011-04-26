@@ -33,8 +33,9 @@ Contents
 
     $.ajaxComboBox = function (area_pack, source, options, msg) {
 
+        // added by Michael Buen...
 
-        // I modified all $input to this.input -- Michael Buen
+        // This facilitates easy access on input and hidden tags, and resetting of page -- Michael Buen
         this.box = null;
 
         function putPrefixToProperty(s, prefix) {
@@ -48,19 +49,14 @@ Contents
             return s.substring(0, ndx + 1) + prefix + s.substring(ndx + 1, s.length);
         }
 
+        
         this.clearValue = function () {            
             this.box.input.val('');            
             this.box.hidden.val('');            
             this.box.resetPage();                        
         };
 
-        /*
-        // added by Michael Buen...
-        this.addPack = function (btn) {
-        addPack(this, btn);
-        };
-        // ...added by Michael Buen
-        */
+        //...added by Michael Buen
 
         //================================================================================
         // 01. ComboBoxパッケージを生成
@@ -207,7 +203,7 @@ Contents
             this.resetPage = function () {
                 page_num_all = 1;
             };
-            // ....added
+            // ...added
 
             //Ajaxにおけるキャッシュを無効にする
             $.ajaxSetup({ cache: false });
@@ -1718,13 +1714,16 @@ Contents
 
         });
 
-        this.data('ajc', ajc);
+        this.data('ajc', ajc); // added by Michael Buen
 
 
         return this;
     }; // fn.ajaxComboBox
 
+    // added by Michael Buen...
     $.fn.ajc = function () {
         return this.data('ajc');
     };
+    // ...added
+
 })(jQuery);
