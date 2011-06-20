@@ -121,6 +121,7 @@
     <Content Include="Scripts\acbox\img\select_ng_mini.png" />
     <Content Include="Scripts\acbox\img\select_ok.png" />
     <Content Include="Scripts\acbox\img\select_ok_mini.png" />
+    <Content Include="Scripts\acbox\js\jquery.ajaxcombobox-google-minified.js" />
     <Content Include="Scripts\acbox\js\x_jquery.ajaxcombobox-google-minified.js" />
     <Content Include="Scripts\acbox\js\jquery.ajaxComboBox.3.6.1 - Copy.js" />
     <Content Include="Scripts\acbox\js\jquery.ajaxComboBox.3.6.1.js" />
