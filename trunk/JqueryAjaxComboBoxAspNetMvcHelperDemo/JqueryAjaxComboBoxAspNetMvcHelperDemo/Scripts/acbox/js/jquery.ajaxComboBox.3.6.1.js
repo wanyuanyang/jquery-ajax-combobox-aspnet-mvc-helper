@@ -1557,7 +1557,7 @@ Contents
             // input_prefix: $(this).attr('id') + '_', //テキストボックスのname属性の接頭辞
 
             the_field_name: $(this).attr('id'), // added by Michael Buen
-            the_field_id: $(this).attr('id').replace('.','_'),
+            the_field_id: $(this).attr('id').replace(/\./g, '_'), // added by Michael Buen
 
             mini: false,                    //ComboBoxをミニサイズで表示するかどうか？
             lang: 'ja',                     //言語を選択(デフォルトは日本語)

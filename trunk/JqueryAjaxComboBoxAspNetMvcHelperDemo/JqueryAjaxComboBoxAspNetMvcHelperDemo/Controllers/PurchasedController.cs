@@ -7,7 +7,7 @@ using JqueryAjaxComboBoxAspNetMvcHelperDemo.Models;
 
 using NHibernate.Linq;
 using JqueryAjaxComboBoxAspNetMvcHelperDemo.ModelsViews;
-using JqueryAjaxComboBoxAspNetMvcHelperDemo.ModelsDtos;
+
 
 namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
 {
@@ -47,7 +47,7 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
                 new PurchasedInputViewModel
                 {
                     MostSellingProductAdvisory = "Tablets are fast-selling product as of late",
-                    PurchasedDto = new ModelsDtos.PurchasedDto()
+                    Purchased = new Purchased()
                 });
         }
 
@@ -61,14 +61,7 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
                 var px = new PurchasedInputViewModel
                 {
                     MostSellingProductAdvisory = "Did you know Bumble Bee car is a fast-selling car?",
-                    PurchasedDto = new PurchasedDto
-                    {
-                        PurchasedId = l.PurchasedId,
-                        CategoryId = l.Product.Category.CategoryId,
-                        ProductId = l.Product.ProductId,
-                        PurchasedBy = l.PurchasedBy,
-                        Quantity = l.Quantity
-                    }
+                    Purchased = l
                 };
 
                 return View("Input", px);
@@ -82,15 +75,7 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
             {
                 using (var s = SessionFactoryBuilder.GetSessionFactory().OpenSession())
                 {
-                    var px = new Purchased
-                    {
-                        PurchasedId = p.PurchasedDto.PurchasedId,
-                        Product = s.Load<Product>(p.PurchasedDto.ProductId),
-                        Quantity = p.PurchasedDto.Quantity,
-                        PurchasedBy = p.PurchasedDto.PurchasedBy
-                    };
-
-                    s.Merge(px);
+                    s.Merge(p.Purchased);
                     s.Flush();
                     return RedirectToAction("Index");
                 }

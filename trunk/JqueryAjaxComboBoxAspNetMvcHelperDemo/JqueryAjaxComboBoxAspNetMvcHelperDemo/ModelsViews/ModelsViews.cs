@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+    using JqueryAjaxComboBoxAspNetMvcHelperDemo.Models;
 
-using JqueryAjaxComboBoxAspNetMvcHelperDemo.ModelsDtos;
+
 
 
 public class PurchasedViewModel
@@ -20,7 +21,10 @@ public class PurchasedViewModel
 public class PurchasedInputViewModel
 {
     public string MostSellingProductAdvisory { get; set; }
-    public PurchasedDto PurchasedDto { get; set; }    
+
+    public int CategoryId { get; set; }
+
+    public Purchased Purchased { get; set; }    
 }
 
 }
