@@ -45,7 +45,7 @@ HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
         <div class="editor-field">
             <table>
             <tr>
-            <td>@Html.AjaxComboBoxFor(model => model.PurchasedDto.CategoryId, "/Category/Lookup", "/Category/Caption", 
+            <td style="width: 250px">@Html.AjaxComboBoxFor(model => model.PurchasedDto.CategoryId, "/Category/Lookup", "/Category/Caption", 
                 new { style="width: 250px" },
                 new {
                     on_selected = @"$('#PurchasedDto\\.ProductId').ajc().clearValue();" 
