@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 using NHibernate.Linq;
 using JqueryAjaxComboBoxAspNetMvcHelperDemo.Models;
-using JqueryAjaxComboBoxAspNetMvcHelperDemo.ModelsDtos;
+
 
 namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
 {
@@ -38,7 +38,7 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
         {
             using (var s = SessionFactoryBuilder.GetSessionFactory().OpenSession())
             {
-                s.Delete(s.Load<ProductDto>(ProductId));                
+                s.Delete(s.Load<Product>(ProductId));                
                 s.Flush();
                 return RedirectToAction("Index");
             }            
@@ -47,19 +47,19 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
 
         public ActionResult Input()
         {
-            return View(new ProductDto());
+            return View(new Product());
         }
 
         public ActionResult InputEdit(int id)
         { 
             using(var s = SessionFactoryBuilder.GetSessionFactory().OpenSession())
             {
-                return View("Input", s.Get<ProductDto>(id));
+                return View("Input", s.Get<Product>(id));
             }
         }
 
         [HttpPost]
-        public ActionResult Input(ProductDto p)
+        public ActionResult Input(Product p)
         {
 
             if (ModelState.IsValid)

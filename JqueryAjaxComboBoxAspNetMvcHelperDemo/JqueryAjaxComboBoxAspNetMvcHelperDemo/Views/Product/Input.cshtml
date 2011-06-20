@@ -1,4 +1,4 @@
-﻿@model JqueryAjaxComboBoxAspNetMvcHelperDemo.ModelsDtos.ProductDto
+﻿@model JqueryAjaxComboBoxAspNetMvcHelperDemo.Models.Product
 
 @using JqueryAjaxComboBoxHelper
 
@@ -53,18 +53,18 @@
             </div>
     
             <div class="editor-label">
-                @Html.LabelFor(model => model.CategoryId, "Category")
+                @Html.LabelFor(model => model.Category.CategoryId, "Category")
             </div>
             <div class="editor-field">
                 <table>
                 <tr>                    
-                    <td>@Html.AjaxComboBoxFor(model => model.CategoryId,
+                    <td>@Html.AjaxComboBoxFor(model => model.Category.CategoryId,
                         "/Category/Lookup",
                         "/Category/Caption",
                         new { style = "width: 300px " },
                         new { sub_info = true, on_selected = "thisIsOk();" })
                     </td>
-                    <td>@Html.ValidationMessageFor(model => model.CategoryId)</td>
+                    <td>@Html.ValidationMessageFor(model => model.Category.CategoryId)</td>
                 </tr>
                 </table>
             </div>

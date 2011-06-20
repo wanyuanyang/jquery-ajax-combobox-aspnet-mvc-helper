@@ -37,58 +37,59 @@ HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
     <fieldset>
         <legend>Purchased</legend>
 
-        @Html.HiddenFor(x => x.PurchasedDto.PurchasedId)
+        @Html.HiddenFor(x => x.Purchased.PurchasedId)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PurchasedDto.CategoryId, "Category")
+            @Html.LabelFor(model => model.Purchased.Product.Category, "Category")
         </div>
         <div class="editor-field">
             <table>
             <tr>
-            <td style="width: 250px">@Html.AjaxComboBoxFor(model => model.PurchasedDto.CategoryId, "/Category/Lookup", "/Category/Caption", 
+            <td style="width: 250px">@Html.AjaxComboBoxFor(model => model.CategoryId, "/Category/Lookup", "/Category/Caption", 
                 new { style="width: 250px" },
                 new {
-                    on_selected = @"$('#PurchasedDto\\.ProductId').ajc().clearValue();" 
+                    on_selected = @"$('#Purchased\\.Product\\.ProductId').ajc().clearValue();" 
+                    //on_selected = "alert('yo');"
                     })</td>
-            <td>@Html.ValidationMessageFor(model => model.PurchasedDto.CategoryId)</td>
+            <td>@Html.ValidationMessageFor(model => model.CategoryId)</td>
             </tr>
             </table>
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PurchasedDto.ProductId, "Product")
+            @Html.LabelFor(model => model.Purchased.Product.ProductId, "Product")
         </div>
         <div class="editor-field">
             <table>
             <tr><td style="width: 250px">
-            @Html.AjaxComboBoxFor(model => model.PurchasedDto.ProductId, "/Product/Lookup", "/Product/Caption",
+            @Html.AjaxComboBoxFor(model => model.Purchased.Product.ProductId, "/Product/Lookup", "/Product/Caption",
             new { style="width: 250px" },
             new
             {
                 sub_info = true,
-                cascaded_word = "$('input[name=PurchasedDto.CategoryId]').val()"
+                cascaded_word = "$('input[name=Purchased\\.CategoryId]').val()"
             })
             </td>           
-            <td>@Html.ValidationMessageFor(model => model.PurchasedDto.ProductId)</td>
+            <td>@Html.ValidationMessageFor(model => model.Purchased.Product.ProductId)</td>
             </tr>
             </table>        
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PurchasedDto.Quantity)
+            @Html.LabelFor(model => model.Purchased.Quantity)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PurchasedDto.Quantity)
-            @Html.ValidationMessageFor(model => model.PurchasedDto.Quantity)
+            @Html.EditorFor(model => model.Purchased.Quantity)
+            @Html.ValidationMessageFor(model => model.Purchased.Quantity)
         </div>
 
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PurchasedDto.PurchasedBy, "Purchased By")
+            @Html.LabelFor(model => model.Purchased.PurchasedBy, "Purchased By")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PurchasedDto.PurchasedBy)
-            @Html.ValidationMessageFor(model => model.PurchasedDto.PurchasedBy)
+            @Html.EditorFor(model => model.Purchased.PurchasedBy)
+            @Html.ValidationMessageFor(model => model.Purchased.PurchasedBy)
         </div>
 
 
