@@ -162,7 +162,7 @@ namespace JqueryAjaxComboBoxHelper
 
             var tagBuilder = new TagBuilder("span");
             tagBuilder.MergeAttributes(htmlAttributes);
-            tagBuilder.MergeAttribute("id", expressionText);
+            tagBuilder.MergeAttribute("id", expressionText.Replace('.','_'));
             tagBuilder.MergeAttribute("class", "ac_area");
             /*tagBuilder.MergeAttribute("style", 
                 "float: left" + 
@@ -262,7 +262,9 @@ $(function() {{
     
 }});
 </script>
-", expressionText.Replace(".", @"\\.")
+"
+// , expressionText.Replace(".", @"\\.")
+, expressionText.Replace(".", @"_")
  , formUniqueName == null ? "" : ", $('#" + formUniqueName + "')"
  , dataSourceUrl
  , captionSrcUrl

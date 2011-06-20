@@ -61,6 +61,7 @@ namespace JqueryAjaxComboBoxAspNetMvcHelperDemo.Controllers
                 var px = new PurchasedInputViewModel
                 {
                     MostSellingProductAdvisory = "Did you know Bumble Bee car is a fast-selling car?",
+                    CategoryId = l.Product.Category.CategoryId,
                     Purchased = l
                 };
 

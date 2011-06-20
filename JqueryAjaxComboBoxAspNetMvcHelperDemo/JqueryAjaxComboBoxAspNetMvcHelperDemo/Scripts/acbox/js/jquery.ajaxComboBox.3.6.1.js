@@ -311,7 +311,7 @@ Contents
 
                     // added by Michael Buen...
                     'name': putPrefixToProperty(options.the_field_name, 'txt_'),
-                    'id': putPrefixToProperty(options.the_field_id, 'txt_')
+                    'id': 'txt_' + options.the_field_id
 
                     // ...added by Michael Buen
                 });
@@ -1556,8 +1556,8 @@ Contents
             // removed by Michael Buen
             // input_prefix: $(this).attr('id') + '_', //テキストボックスのname属性の接頭辞
 
-            the_field_name: $(this).attr('id'), // added by Michael Buen
-            the_field_id: $(this).attr('id').replace(/\./g, '_'), // added by Michael Buen
+            the_field_name: $(this).attr('id').replace(/_/g, '.'), // added by Michael Buen
+            the_field_id: $(this).attr('id'), // added by Michael Buen
 
             mini: false,                    //ComboBoxをミニサイズで表示するかどうか？
             lang: 'ja',                     //言語を選択(デフォルトは日本語)
