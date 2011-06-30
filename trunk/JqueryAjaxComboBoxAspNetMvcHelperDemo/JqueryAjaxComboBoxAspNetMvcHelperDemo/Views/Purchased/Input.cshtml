@@ -15,6 +15,7 @@
 <script src="@Url.Content("~/Scripts/jQuery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
 <link href="@Url.Content("~/Scripts/acbox/css/jquery.ajaxComboBox.css")" rel="stylesheet" type="text/css" />
+
 <script src="@Url.Content("~/Scripts/acbox/js/jquery.ajaxcombobox-google-minified.js")" type="text/javascript"></script>
 
 @*<script src="/Scripts/acbox/js/jquery.ajaxComboBox.3.6.1.js" type="text/javascript"></script>*@
@@ -49,8 +50,7 @@ HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             <td style="width: 250px">@Html.AjaxComboBoxFor(model => model.CategoryId, "/Category/Lookup", "/Category/Caption", 
                 new { style="width: 250px" },
                 new {
-                    on_selected = @"$('#Purchased_Product_ProductId').ajc().clearValue();" 
-                    //on_selected = "alert('yo');"
+                    on_selected = @"$('#Purchased_Product_ProductId').ajc().clearValue();"                     
                     })</td>
             <td>@Html.ValidationMessageFor(model => model.CategoryId)</td>
             </tr>
