@@ -16,9 +16,9 @@
 
 <link href="@Url.Content("~/Scripts/acbox/css/jquery.ajaxComboBox.css")" rel="stylesheet" type="text/css" />
 
-<script src="@Url.Content("~/Scripts/acbox/js/jquery.ajaxcombobox-google-minified.js")" type="text/javascript"></script>
+@*<script src="@Url.Content("~/Scripts/acbox/js/jquery.ajaxcombobox-google-minified.js")" type="text/javascript"></script>*@
 
-@*<script src="/Scripts/acbox/js/jquery.ajaxComboBox.3.6.1.js" type="text/javascript"></script>*@
+<script src="/Scripts/acbox/js/jquery.ajaxComboBox.3.6.1.js" type="text/javascript"></script>
 
 
 
@@ -68,7 +68,7 @@ HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             new
             {
                 sub_info = true,
-                cascaded_word = "jQuery('input[name=CategoryId]').val()"
+                cascaded_word = "$('input[name=CategoryId]').val()"
             })
             </td>           
             <td>@Html.ValidationMessageFor(model => model.Purchased.Product.ProductId)</td>
@@ -110,11 +110,8 @@ HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
 
 
     $(function () {
-        $('#uxTest').click(function () {
-            alert('yo');
-            $('#PurchasedDto\\.ProductId').ajc().clearValue();
-            alert('yu');
-
+        $('#uxTest').click(function () {            
+            $('#Purchased_Product_ProductId').ajc().clearValue();
         });
     });
 </script>

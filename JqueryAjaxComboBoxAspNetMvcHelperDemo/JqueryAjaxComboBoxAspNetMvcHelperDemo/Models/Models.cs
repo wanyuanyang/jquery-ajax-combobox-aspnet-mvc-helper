@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FluentNHibernate.Mapping;
+    using System.ComponentModel.DataAnnotations;
 
 
 public class Product
@@ -53,8 +54,8 @@ public class Purchased
 {
     public virtual int PurchasedId { get; set; }
     public virtual Product Product { get; set; }
-    public virtual int Quantity { get; set; }
-    public virtual string PurchasedBy { get; set; }
+    [Required] public virtual int Quantity { get; set; }    
+    [Required] public virtual string PurchasedBy { get; set; }
 }
 
     

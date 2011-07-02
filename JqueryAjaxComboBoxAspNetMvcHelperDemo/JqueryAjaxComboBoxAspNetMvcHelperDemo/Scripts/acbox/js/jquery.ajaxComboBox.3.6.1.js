@@ -49,11 +49,11 @@ Contents
             return s.substring(0, ndx + 1) + prefix + s.substring(ndx + 1, s.length);
         }
 
-        
-        this.clearValue = function () {            
-            this.box.input.val('');            
-            this.box.hidden.val('');            
-            this.box.resetPage();                        
+
+        this.clearValue = function () {
+            this.box.input.val('');
+            this.box.hidden.val('');
+            this.box.resetPage();
         };
 
         //...added by Michael Buen
@@ -98,6 +98,9 @@ Contents
             }
             options.init_val = false;
         }
+
+
+
 
         //================================================================================
         // 02. ComboBoxパッケージ用のメソッド
@@ -362,7 +365,7 @@ Contents
             this.hidden = $hidden; // added by Michael Buen
 
             // $hidden.attr({ 'x': 'y' }); // sample adding of attribute
-            $hidden.attr(options.other_attr);
+            $hidden.attr(options.other_attr); // added by Michael Buen
 
 
             //ボタンのtitle属性初期化
@@ -458,6 +461,8 @@ Contents
                 checkValChange();
             });
             $input.blur(function (ev) {
+
+
                 //完全一致のとき、候補リスト1行目をクリックした時の処理を行う
                 if (
 					$results.children('li').length == 1 &&
@@ -475,6 +480,12 @@ Contents
 
                 //セレクト状態を確認
                 btnAttrDefault();
+
+
+                $hidden.valid(); // added by Michael Buen
+
+
+
             });
             $input.mousedown(function (ev) {
                 reserve_click = true;
@@ -703,6 +714,7 @@ Contents
                                 'alt': msg['get_all_alt'],
                                 'title': msg['select_ng']
                             });
+
                             return;
                         }
                     } else {
@@ -758,6 +770,8 @@ Contents
 
                         type_suggest = true;
                         suggest();
+
+
                     }
                     prev_value = now_value;
 
@@ -836,7 +850,7 @@ Contents
                 } else {
                     checkValChange();
 
-                    $hidden.valid(); // added by Michael Buen
+
                 }
             }
 
@@ -1407,6 +1421,8 @@ Contents
 
                 //ボタンのtitle属性初期化
                 btnAttrDefault();
+
+
             }
             //候補一覧の1番目の項目を、選択状態にする
             function selectFirstResult() {
@@ -1629,7 +1645,7 @@ Contents
         //************************************************************
         switch (options.lang) {
 
-            //日本語                                                                                       
+            //日本語                                                                                                      
             case 'ja':
                 var msg = {
                     'add_btn': '追加ボタン',
@@ -1654,7 +1670,7 @@ Contents
                 };
                 break;
 
-            //英語                                                                                       
+            //英語                                                                                                      
             case 'en':
                 var msg = {
                     'add_btn': 'Add button',
@@ -1679,7 +1695,7 @@ Contents
                 };
                 break;
 
-            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                                                                                       
+            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                                                                                                      
             case 'es':
                 var msg = {
                     'add_btn': 'Agregar boton',
