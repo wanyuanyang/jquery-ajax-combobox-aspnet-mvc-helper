@@ -1294,7 +1294,7 @@ Contents
 					    e.stopPropagation();
 					    selectCurrentResult();
 
-					    $input.focus(); // added by Michael Buen
+					    // $input.focus(); // added by Michael Buen
 					});
 
                 //ボタンのtitle属性変更(閉じる)
