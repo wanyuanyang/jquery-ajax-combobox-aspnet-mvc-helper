@@ -37,9 +37,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\_Common\fluentnhibernate-NH3.1-1.2\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="JqueryAjaxComboBox, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4df2486efdfd43a4, processorArchitecture=MSIL">
+    <Reference Include="Ienablemuch.JqueryAjaxComboBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\JqueryAjaxComboBox\JqueryAjaxComboBox\bin\Debug\JqueryAjaxComboBox.dll</HintPath>
+      <HintPath>..\JqueryAjaxComboBox\JqueryAjaxComboBox\bin\Release\Ienablemuch.JqueryAjaxComboBox.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,6 +80,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PurchasedController.cs" />
+    <Compile Include="Controllers\SlickgridController.cs" />
     <Compile Include="GeneralCode.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -87,6 +88,7 @@
     <Compile Include="ModelsViews\ModelsViews.cs" />
     <Compile Include="Models\Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\andrewchilds-SlickGrid-a5a6977\build\minimize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -106,25 +108,112 @@
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Models\DDL.txt" />
-    <Content Include="Scripts\acbox\css\jquery.ajaxComboBox.css" />
-    <Content Include="Scripts\acbox\img\add_out.png" />
-    <Content Include="Scripts\acbox\img\add_over.png" />
-    <Content Include="Scripts\acbox\img\ajax-loader.gif" />
-    <Content Include="Scripts\acbox\img\ajax-loader_mini.gif" />
-    <Content Include="Scripts\acbox\img\btn_on.png" />
-    <Content Include="Scripts\acbox\img\btn_out.png" />
-    <Content Include="Scripts\acbox\img\combobox_button.png" />
-    <Content Include="Scripts\acbox\img\combobox_button_mini.png" />
-    <Content Include="Scripts\acbox\img\del_out.png" />
-    <Content Include="Scripts\acbox\img\del_over.png" />
-    <Content Include="Scripts\acbox\img\select_ng.png" />
-    <Content Include="Scripts\acbox\img\select_ng_mini.png" />
-    <Content Include="Scripts\acbox\img\select_ok.png" />
-    <Content Include="Scripts\acbox\img\select_ok_mini.png" />
-    <Content Include="Scripts\acbox\js\jquery.ajaxcombobox-google-minified.js" />
-    <Content Include="Scripts\acbox\js\x_jquery.ajaxcombobox-google-minified.js" />
-    <Content Include="Scripts\acbox\js\jquery.ajaxComboBox.3.6.1 - Copy.js" />
-    <Content Include="Scripts\acbox\js\jquery.ajaxComboBox.3.6.1.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\css\smoothness\jquery-ui-1.8.5.custom.css" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example1-simple.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example10-async-post-render.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example11-autoheight.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example12-fillbrowser.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example13-getItem-sorting.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example14-highlighting.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example15-fork-feature-demo.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example2-formatters.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example3-editing.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example3a-compound-editors.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example3b-editing-with-undo.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example4-model.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example5-collapsing.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example6-ajax-loading.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example7-events.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example8-alternative-display.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\example9-row-reordering.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\examples.css" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\examples\slick-default-theme.css" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\actions.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\ajax-loader-small.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\arrow_redo.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\arrow_right_peppermint.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\arrow_right_spearmint.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\arrow_undo.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\bullet_blue.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\bullet_star.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\bullet_toggle_minus.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\bullet_toggle_plus.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\calendar.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\collapse.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\comment_yellow.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\down.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\drag-handle.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\editor-helper-bg.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\expand.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\grid_sprites.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\header-bg.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\header-columns-bg.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\header-columns-over-bg.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\help.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\info.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\listview.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\pencil.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\row-over-bg.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\sort-asc.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\sort-asc.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\sort-desc.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\sort-desc.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\stripes.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\tablesort_down_arrow.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\tablesort_inactive.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\tablesort_up_arrow.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\tag_red.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\tick.png" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\user_identity.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\images\user_identity_plus.gif" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\init.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\firebug-lite.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\firebugx.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery-1.4.3.min.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery-1.4.4.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery-ui-1.8.5.custom.min.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.cookie-1.0.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.event.drag-2.0.custom.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.event.drag-2.0.min.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.event.drop-2.0.min.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.json-2.2.min.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.jsonp-1.1.0.min.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.simulate.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\jquery.sparkline.min.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\qunit.css" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\lib\qunit.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\MIT-LICENSE.txt" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.columnpicker.css" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.columnpicker.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.editors.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.filter.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.grid.css" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.grid.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.model.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.pager.css" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.pager.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.remotemodel.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\slick.session.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\tests\dataview\dataview.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\tests\dataview\index.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\tests\grid\grid.js" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\tests\grid\index.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\tests\index.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\tests\model benchmarks.html" />
+    <Content Include="Scripts\andrewchilds-SlickGrid-a5a6977\tests\scrolling benchmarks.html" />
     <Content Include="Scripts\ASCProvided\Common.js" />
     <Content Include="Scripts\ASCProvided\jclock.js" />
     <Content Include="Scripts\ASCProvided\jquery-ui-1.8.10.custom.min.js" />
@@ -159,6 +248,26 @@
     <Content Include="Scripts\flexigrid\images\uup.png" />
     <Content Include="Scripts\flexigrid\images\wbg.gif" />
     <Content Include="Scripts\flexigrid\style.css" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\css\jquery.ajaxComboBox.css" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\add_out.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\add_over.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\ajax-loader.gif" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\ajax-loader_mini.gif" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\btn_on.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\btn_out.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\combobox_button.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\combobox_button_mini.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\del_out.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\del_over.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\select_ng.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\select_ng_mini.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\select_ok.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\img\select_ok_mini.png" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\js\jquery.ajaxcombobox-google-minified.js" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\js\jquery.ajaxComboBox.3.6.1 - Copy.js" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\js\jquery.ajaxComboBox.3.6.1.js" />
+    <Content Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\js\x_jquery.ajaxcombobox-google-minified.js" />
+    <Content Include="Scripts\Ienablemuch.Scripts\ParseDynamicContent.js" />
     <Content Include="Scripts\jQuery\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jQuery\jquery-1.4.4.js" />
     <Content Include="Scripts\jQuery\jquery-1.4.4.min.js" />
@@ -179,7 +288,6 @@
     <Content Include="Scripts\Microsoft\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\Others\ParseDynamicContent.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -198,9 +306,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Database\TheCatalog.sqlite" />
-    <None Include="Scripts\acbox\php\ajaxComboBox.php" />
-    <None Include="Scripts\acbox\php\initval.php" />
-    <None Include="Scripts\acbox\SQLite2\test.sqlite" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Input.cshtml" />
     <Content Include="Views\Product\DeletePreview.cshtml" />
@@ -208,8 +313,18 @@
     <Content Include="Views\Purchased\Index.cshtml" />
     <Content Include="Views\Purchased\Input.cshtml" />
     <Content Include="Views\Purchased\DeletePreview.cshtml" />
+    <None Include="Scripts\andrewchilds-SlickGrid-a5a6977\.gitignore" />
+    <None Include="Scripts\andrewchilds-SlickGrid-a5a6977\build\minimize.bat" />
+    <None Include="Scripts\andrewchilds-SlickGrid-a5a6977\README.markdown" />
+    <Content Include="Views\Slickgrid\Index.cshtml" />
+    <None Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\php\ajaxComboBox.php" />
+    <None Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\php\initval.php" />
+    <None Include="Scripts\Ienablemuch.Scripts\Ienablemuch.JqueryAjaxComboBox\SQLite2\test.sqlite" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\acbox\" />
+    <Folder Include="Scripts\Others\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
