@@ -22,7 +22,7 @@ public class PurchasedInputViewModel
 {
     public string MostSellingProductAdvisory { get; set; }
 
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
 
     public Purchased Purchased { get; set; }    
 }

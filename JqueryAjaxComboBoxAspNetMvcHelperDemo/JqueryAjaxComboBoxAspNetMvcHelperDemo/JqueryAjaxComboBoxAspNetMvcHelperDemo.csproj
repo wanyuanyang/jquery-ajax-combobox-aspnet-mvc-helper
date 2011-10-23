@@ -39,7 +39,7 @@
     </Reference>
     <Reference Include="Ienablemuch.JqueryAjaxComboBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\JqueryAjaxComboBox\JqueryAjaxComboBox\bin\Release\Ienablemuch.JqueryAjaxComboBox.dll</HintPath>
+      <HintPath>..\..\Ienablemuch.JqueryAjaxComboBox\bin\Release\Ienablemuch.JqueryAjaxComboBox.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

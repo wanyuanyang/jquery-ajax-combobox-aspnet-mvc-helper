@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JqueryAjaxComboBoxAspNetMvcHelperDemo", "JqueryAjaxComboBoxAspNetMvcHelperDemo\JqueryAjaxComboBoxAspNetMvcHelperDemo.csproj", "{5BD0FA9B-C7F3-49AD-BAD1-2EA70921695B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ienablemuch.JqueryAjaxComboBox", "JqueryAjaxComboBox\JqueryAjaxComboBox\Ienablemuch.JqueryAjaxComboBox.csproj", "{EF64D95E-BD8D-4647-BE21-D26E080703BD}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -19,10 +17,6 @@ Global
 		{5BD0FA9B-C7F3-49AD-BAD1-2EA70921695B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BD0FA9B-C7F3-49AD-BAD1-2EA70921695B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BD0FA9B-C7F3-49AD-BAD1-2EA70921695B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF64D95E-BD8D-4647-BE21-D26E080703BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF64D95E-BD8D-4647-BE21-D26E080703BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF64D95E-BD8D-4647-BE21-D26E080703BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF64D95E-BD8D-4647-BE21-D26E080703BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

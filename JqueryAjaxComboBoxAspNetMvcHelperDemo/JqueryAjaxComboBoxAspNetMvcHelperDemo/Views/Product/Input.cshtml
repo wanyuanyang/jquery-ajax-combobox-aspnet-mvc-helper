@@ -44,7 +44,7 @@
                 @Html.LabelFor(model => model.ProductCode, "Product Code")
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.ProductCode)
+                @Html.EditorFor(model => model.ProductCode)                
                 @Html.ValidationMessageFor(model => model.ProductCode)
             </div>
     
@@ -63,14 +63,21 @@
                 <table>
                 <tr>                    
                     <td>
-                    @Html.AjaxComboBoxFor(model => model.Category.CategoryId,
+@*                    @Html.AjaxComboBoxFor(model => model.Category.CategoryId,
                         "/Category/Lookup",
                         "/Category/Caption",
                         new { style = "width: 300px " },
                         new { sub_info = true, on_selected = "thisIsOk();" })
-
-                    
-                    
+*@
+                        
+                            
+                        // Added string-based name. It's still better to use expression-based name(above code)
+  
+                        @Html.AjaxComboBox("Category.CategoryId", 
+                            "/Category/Lookup",
+                            "/Category/Caption",
+                            new { style = "width: 300px " },
+                            new { sub_info = true, on_selected = "thisIsOk();" })
                        
 
                     </td>
