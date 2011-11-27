@@ -68,6 +68,10 @@ Update: 2011-11-26
             this.box.showCaption();
         }
 
+        this.getText = function () {
+            return this.box.input.val();
+        }
+
 
         //...added by Buen
 
@@ -1711,7 +1715,7 @@ Update: 2011-11-26
         //************************************************************
         switch (options.lang) {
 
-            //日本語                                      
+            //日本語                                          
             case 'ja':
                 var msg = {
                     'add_btn': '追加ボタン',
@@ -1736,7 +1740,7 @@ Update: 2011-11-26
                 };
                 break;
 
-            //英語                                      
+            //英語                                          
             case 'en':
                 var msg = {
                     'add_btn': 'Add button',
@@ -1761,7 +1765,7 @@ Update: 2011-11-26
                 };
                 break;
 
-            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                                      
+            //スペイン語 (Joaquin G. de la Zerda氏からの提供)                                          
             case 'es':
                 var msg = {
                     'add_btn': 'Agregar boton',
