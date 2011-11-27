@@ -1,0 +1,125 @@
+<?php
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//setting for MySQL
+//You MUST change this value.
+$mysql_server = 'localhost';
+$mysql_user   = 'root';
+$mysql_db     = 'my_test';
+$mysql_encode = 'utf8';
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+//----------------------------------------------------
+// The use of the data sent from the Javascript side is enabled.
+//----------------------------------------------------
+$data         = array();
+
+$db_table     = mysql_escape_string($_GET['db_table']);
+$q_word       = mysql_escape_string($_GET['q_word']);
+$page_num     = mysql_escape_string($_GET['page_num']);
+$per_page     = mysql_escape_string($_GET['per_page']);
+$field        = mysql_escape_string($_GET['field']);
+$show_field   = mysql_escape_string($_GET['show_field']);
+$hide_field   = mysql_escape_string($_GET['hide_field']);
+$select_field = mysql_escape_string($_GET['select_field']);
+$order_field  = mysql_escape_string($_GET['order_field']);
+$primary_key  = mysql_escape_string($_GET['primary_key']);
+$order_by     = mysql_escape_string($_GET['order_by']);
+
+$offset       = ($page_num - 1) * $per_page;
+$show_field   = ($show_field)
+	? explode(',',$show_field)
+	: array(false);
+$hide_field   = explode(',',$hide_field);
+
+
+//----------------------------------------------------
+// connect data base
+//----------------------------------------------------
+$db = mysql_connect($mysql_server, $mysql_user);
+mysql_select_db($mysql_db, $db);
+mysql_query('SET NAMES '.$mysql_encode);
+
+//----------------------------------------------------
+// get autocomplete candidate
+//----------------------------------------------------
+$query = "
+
+	SELECT   $select_field
+	FROM     $db_table
+	WHERE    $field LIKE '%$q_word%'
+	ORDER BY (
+		CASE
+			WHEN $order_field LIKE '$q_word'
+			THEN 0
+			WHEN $order_field LIKE '$q_word%'
+			THEN 1
+			ELSE 2
+		END
+	), $order_field $order_by
+	LIMIT    $per_page
+	OFFSET   $offset
+
+";
+$rows  = mysql_query($query, $db);
+
+$data['cnt_page'] = 0;
+$attached_cnt = 0;
+while ($row = mysql_fetch_array($rows, MYSQL_ASSOC))
+{
+	$data['cnt_page'] ++;
+	foreach($row as $key => $value){
+
+		// for "select_only" option
+		if($key == $primary_key){
+			$data['primary_key'][] = $value;
+		}
+
+		// get the value for autocomplete candidate
+		if($key == $field){
+			$data['candidate'][] = $value;
+
+		} else {
+
+			// for Sub-info
+			if(!in_array($key, $hide_field)){
+				if(
+					$show_field[0] !== false
+					&& !in_array('*', $show_field)
+					&& !in_array($key, $show_field)
+				){
+					continue;
+				}
+
+				$data['attached'][$attached_cnt][] = array(
+					0 => $key,
+					1 => $value
+				);
+			}
+		}
+	}
+	$attached_cnt++;
+}
+
+
+//----------------------------------------------------
+// get the entire number
+//----------------------------------------------------
+$query = "
+	SELECT   $field
+	FROM     $db_table
+	WHERE    $field LIKE '%$q_word%'
+";
+$data['cnt'] = mysql_num_rows( mysql_query($query, $db) );
+
+echo json_encode($data);
+
+
+//----------------------------------------------------
+// End
+//----------------------------------------------------
+mysql_close($db);
+
+?>
