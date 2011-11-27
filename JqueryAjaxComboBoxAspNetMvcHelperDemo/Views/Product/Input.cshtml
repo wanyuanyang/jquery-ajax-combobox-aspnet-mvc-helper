@@ -1,0 +1,115 @@
+﻿@model JqueryAjaxComboBoxAspNetMvcHelperDemo.Models.Product
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Create</title>
+    
+    <script src="/Scripts/ASCProvided/Common.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jQuery/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jQuery/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jQuery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+    <script src="/Scripts/Ienablemuch.Scripts/Ienablemuch.JqueryAjaxComboBox/js/jquery.ajaxComboBox.3.7.js"
+        type="text/javascript"></script>
+    <link href="/Scripts/Ienablemuch.Scripts/Ienablemuch.JqueryAjaxComboBox/css/jquery.ajaxComboBox.css"
+        rel="stylesheet" type="text/css" />
+
+    <script src="/Scripts/Ienablemuch.Scripts/ParseDynamicContent.js" type="text/javascript"></script>
+
+    
+
+
+
+    
+</head>
+<body>
+
+
+    @using (Html.BeginForm("Input", "Product"))
+    {
+
+        <fieldset>
+            <legend>Product</legend>
+
+            @Html.HiddenFor(model => model.ProductId)
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductCode, "Product Code")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ProductCode)                
+                @Html.ValidationMessageFor(model => model.ProductCode)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductName, "Product Name")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ProductName)
+                
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Category.CategoryId, "Category")
+            </div>
+            <div class="editor-field">
+                <table>
+                <tr>                    
+                    <td>
+                    @Html.AjaxComboBoxFor(model => model.Category.CategoryId,
+                        "/Category/Lookup",
+                        "/Category/Caption",
+                        new { style = "width: 300px " },
+                        new { sub_info = true, on_selected = "thisIsOk();" })
+
+                        
+                            
+@*                        // Added string-based name. It's still better to use expression-based name(above code)*@
+  
+@*                        @Html.AjaxComboBox("Category.CategoryId", 
+                            "/Category/Lookup",
+                            "/Category/Caption",
+                            new { style = "width: 300px " },
+                            new { sub_info = true, on_selected = "thisIsOk();" })
+*@                       
+
+                    </td>
+                    <td>@Html.ValidationMessageFor(model => model.Category.CategoryId)</td>
+                </tr>
+                </table>
+            </div>
+    
+            <p>
+                <input type="submit" value="Save" />
+                <input type="button" id="uxTester" value="Tester" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>   
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $('#uxTester').click(function () {
+            // $('input[name=txt_CategoryId]').val('excellent!');            
+            // $('input[name=Category.CategoryId]').val('id goes here');
+            alert($('input[name=Category.CategoryId]').val());
+            $('#Category_CategoryId').html('POCO YO!');
+        });
+    });
+
+    function thisIsOk() {
+        // alert('This is great!');
+    }
+</script>
