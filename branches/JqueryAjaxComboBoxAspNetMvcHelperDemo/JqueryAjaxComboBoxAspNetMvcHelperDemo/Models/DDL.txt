@@ -1,0 +1,17 @@
+﻿
+PRAGMA foreign_keys = ON;
+
+create table Category
+(
+CategoryId integer not null primary key autoincrement,
+CategoryCode varchar(6) not null unique,
+CategoryName varchar(50) not null unique
+);
+
+create table Product
+(
+ProductId integer not null primary key autoincrement,
+ProductCode varchar(6) not null unique,
+ProductName varchar(50) not null unique,
+CategoryId int not null references Category(CategoryId)
+);

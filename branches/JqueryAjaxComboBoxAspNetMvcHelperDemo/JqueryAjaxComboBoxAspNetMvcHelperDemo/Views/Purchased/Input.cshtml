@@ -1,0 +1,116 @@
+﻿@model JqueryAjaxComboBoxAspNetMvcHelperDemo.ModelsViews.PurchasedInputViewModel
+
+@{ Html.EnableClientValidation(true); }
+
+@{
+    ViewBag.Title = "Input";
+}
+
+
+
+<h2>Input</h2>
+
+<script src="@Url.Content("~/Scripts/jQuery/jquery-1.4.4.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jQuery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jQuery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+<script src="/Scripts/Ienablemuch.Scripts/Ienablemuch.JqueryAjaxComboBox/js/jquery.ajaxComboBox.3.7.js"
+        type="text/javascript"></script>
+    <link href="/Scripts/Ienablemuch.Scripts/Ienablemuch.JqueryAjaxComboBox/css/jquery.ajaxComboBox.css"
+        rel="stylesheet" type="text/css" />
+
+
+<script src="/Scripts/Ienablemuch.Scripts/ParseDynamicContent.js" type="text/javascript"></script>
+
+<p>@Model.MostSellingProductAdvisory</p>
+
+
+@{
+HtmlHelper.ClientValidationEnabled = true;
+HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+}
+
+
+
+@using (Html.BeginForm("Input", "Purchased")) {
+    
+    <fieldset>
+        <legend>Purchased</legend>
+
+        @Html.HiddenFor(x => x.Purchased.PurchasedId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId, "Category")
+        </div>
+        <div class="editor-field">
+            <table>
+            <tr>
+            <td style="width: 250px">@Html.AjaxComboBoxFor(model => model.CategoryId, "/Category/Lookup", "/Category/Caption", 
+                new { style="width: 250px" },
+                new {
+                    on_selected = @"$('#Purchased_Product_ProductId').ajc().clearValue();"                     
+                    })</td>
+            <td>@Html.ValidationMessageFor(model => model.CategoryId)</td>
+            </tr>
+            </table>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Purchased.Product.ProductId, "Product")
+        </div>
+        <div class="editor-field">
+            <table>
+            <tr><td style="width: 250px">
+            @Html.AjaxComboBoxFor(model => model.Purchased.Product.ProductId, "/Product/Lookup", "/Product/Caption",
+            new { style="width: 250px" },
+            new
+            {
+                sub_info = true,
+                cascaded_word = "$('input[name=CategoryId]').val()"
+            })
+            </td>           
+            <td>@Html.ValidationMessageFor(model => model.Purchased.Product.ProductId)</td>
+            </tr>
+            </table>        
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Purchased.Quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Purchased.Quantity)
+            @Html.ValidationMessageFor(model => model.Purchased.Quantity)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Purchased.PurchasedBy, "Purchased By")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Purchased.PurchasedBy)
+            @Html.ValidationMessageFor(model => model.Purchased.PurchasedBy)
+        </div>
+
+
+
+        <p>
+            <input type="submit" value="Save" />
+            <input type="button" id="uxTest" value="Test" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+
+    $(function () {
+        $('#uxTest').click(function () {            
+            $('#Purchased_Product_ProductId').ajc().clearValue();
+        });
+    });
+</script>
